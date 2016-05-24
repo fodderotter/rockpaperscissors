@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Rock Paper Scissors</title>
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
+    <title>Rock Paper Scissors</title>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="https://use.fontawesome.com/53d64b7f03.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
+
 <body>
+    <header class="flex center">
+        <h1 id="name">Rock Paper Scissors</h1>
+    </header>
 
-<h1>Rock Paper Scissors</h1>
+    <section>
+        <div class="timeSection flex center">
+            <label>How long do you want to play?
+                <input type="number" placeholder="Minutes" min="0" id="setMin">
+                <input type="number" placeholder="Seconds" min="0" max="60" id="setSec">
+            </label>
+        </div>
+        <div class="flex center">
+            <div class="timer flex row vertical-center">
+                <h1 id="gameMin">00</h1>
+                <h1>:</h1>
+                <h1 id="gameSec">00</h1>
+            </div>
+        </div>
+        <div class="flex center row">
+            <button type="button" id="start">Start Game!</button>
+            <button type="button">Reset Timer!</button>
+        </div>
+    </section>
 
+    <section class="game">
+        <div class="userChoices">
+            <i class="fa fa-hand-rock-o fa-5x pick" id="playerRock"></i>
+            <i class="fa fa-hand-paper-o fa-5x pick" id="playerPaper"></i>
+            <i class="fa fa-hand-scissors-o fa-5x pick" id="playerScissors"></i>
+        </div>
+    </section>
 
-
-<div class="timeSection">
-	<label>How long do you want to play? 
-		<input type="number" placeholder="Minutes" min="0" id="setMin">
-		<input type="number" placeholder="Seconds" min="0" max="60" id="setSec">
-	</label>
-	<div class="timer">
-		<span id="gameMin">00</span><span></span>:<span id="gameSec">00</span>
-	</div>
-	<button type="button" id="start">Start Game!</button>
-	<button type="button">Reset Timer!</button>
-</div>
-
-<div class="gameSection">
-	
-</div>
-
-
-<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="./js/main.js"></script>
+    <section class="scores flex center">
+    	<div class="gameScores flex row">
+            <div>Wins:</div>
+            <div id="wins">0</div>
+            <div>Ties:</div>
+            <div id="ties">0</div>
+            <div>Losses:</div>
+            <div id="losses">0</div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 </body>
+
 </html>

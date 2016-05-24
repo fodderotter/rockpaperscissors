@@ -1,1 +1,47 @@
-main.css
+*{
+	font-family: "Oxygen", sans-serif;
+}
+
+#name{
+	font-size: 5rem;
+}
+
+.flex{
+	display:flex;
+}
+
+.row{
+	flex-direction: row;
+}
+
+.column{
+	flex-direction: column;
+}
+
+.center{
+	justify-content: center;
+}
+
+.around{
+	justify-content: space-around;
+}
+
+.between{
+	justify-content: space-between;
+}
+
+.vertical-center{
+	align-items: center;
+}
+
+#wins{
+	color:green;
+}
+
+#ties{
+	color:orange;
+}
+
+#losses{
+	color:red;
+}
