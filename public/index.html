@@ -13,12 +13,11 @@
     <header class="flex center">
         <h1 id="name">Rock Paper Scissors</h1>
     </header>
-
     <section>
         <div class="timeSection flex center">
             <label>How long do you want to play?
-                <input type="number" placeholder="Minutes" min="0" id="setMin">
-                <input type="number" placeholder="Seconds" min="0" max="60" id="setSec">
+                <input type="number" placeholder="Minutes" min="0" id="setMin" class="set">
+                <input type="number" placeholder="Seconds" min="0" max="60" id="setSec" class="set">
             </label>
         </div>
         <div class="flex center">
@@ -30,31 +29,44 @@
         </div>
         <div class="flex center row">
             <button type="button" id="start">Start Game!</button>
-            <button type="button">Reset Timer!</button>
+            <button type="button" id="reset" disabled>Reset Timer!</button>
         </div>
     </section>
-
-    <section class="game flex row space between">
-        <div class="userChoices">
-            <i class="fa fa-hand-rock-o fa-5x pick" id="playerRock"></i>
-            <i class="fa fa-hand-paper-o fa-5x pick" id="playerPaper"></i>
-            <i class="fa fa-hand-scissors-o fa-5x pick" id="playerScissors"></i>
+    <section class="game flex row around">
+        <div class="userChoices flex column vertical-center">
+            <h1>Player's Choice</h1>
+            <div class="flex row">
+                <div class="flex column">
+                    <i class="fa fa-hand-rock-o fa-5x pick" id="playerRock"></i>
+                    <label class="flex center">Rock!</label>
+                </div>
+                <div class="flex column">
+                    <i class="fa fa-hand-paper-o fa-5x pick" id="playerPaper"></i>
+                    <label class="flex center">Paper!</label>
+                </div>
+                <div class="flex column">
+                    <i class="fa fa-hand-scissors-o fa-5x pick" id="playerScissors"></i>
+                    <label class="flex center">Scissors!</label>
+                </div>
+            </div>
         </div>
-        <div class="comChoice">
-        	<div hidden="true">
-        		<i class="fa fa-hand-rock-o fa-5x pick"></i>
-        	</div>
-        	<div hidden="true">
-        		<i class="fa fa-hand-paper-o fa-5x pick"></i>
-        	</div>
-            <div hidden="true">
-            	<i class="fa fa-hand-scissors-o fa-5x pick"></i>
+        <div class="flex column vertical-center">
+            <h1>Opponent's Selection</h1>
+            <div class="comChoice">
+                <div hidden="true" id="comRock">
+                    <i class="fa fa-hand-rock-o fa-5x pick"></i>
+                </div>
+                <div hidden="true" id="comPaper">
+                    <i class="fa fa-hand-paper-o fa-5x pick"></i>
+                </div>
+                <div hidden="true" id="comScissors">
+                    <i class="fa fa-hand-scissors-o fa-5x pick"></i>
+                </div>
             </div>
         </div>
     </section>
-
     <section class="scores flex center">
-    	<div class="flex row vertical-center">
+        <div class="flex row vertical-center">
             <div>Wins:</div>
             <div id="wins" class="scores">0</div>
             <div>Ties:</div>

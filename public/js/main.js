@@ -9,9 +9,12 @@ var min = $("#setMin"),
 	losses = 0,
 	ties = 0,
 	gameStarted = false,
-	rock = $("#playerRock"),
-	paper = $("#playerPaper"),
-	scissors = $("#playerScissors")
+	playerRock = $("#playerRock"),
+	playerPaper = $("#playerPaper"),
+	playerScissors = $("#playerScissors"),
+    comRock = $("#comRock"),
+    comPaper = $("#comPaper"),
+    comScissors = $("#comScissors")
 
 
 $(document).ready(function() {
@@ -88,76 +91,129 @@ $(document).ready(function() {
 
     // ***gamestart logic***
     
-    $("#start").click(function() {
-    	$(this).prop("disabled", true);
+    $("#start").click(function() {        
+    	$(this).prop("disabled", true);        
     	min.prop("disabled", true);
     	sec.prop("disabled", true);
-        startGame(function() {            
-            $("#start").prop("disabled", false);
+        startGame(function() {
+            if(wins > losses){
+                alert("Final Score: " + wins + " wins, " + losses + " losses, " + ties + " ties. You Win!")
+            }
+            else if(wins < losses){
+                alert("Final Score: " + wins + " wins, " + losses + " losses, " + ties + " ties. You Lose!")
+            }
+            else{
+                alert("Final Score: " + wins + " wins, " + losses + " losses, " + ties + " ties. It's a tie!")
+            }
+            // $("#start").prop("disabled", false);
+            $("#reset").prop("disabled", false);
             min.prop("disabled", false);
     		sec.prop("disabled", false);
             gameStarted = false;
         })
     });
 
-    // randomizing com choice and keeping track of scores
+    // player choice for primary game function
 
     $(".pick").click(function() {
+
+        // randomizing com choice
+
         var playerChoice = this.id;
         var comChoice = Math.floor(Math.random() * 3) + 1;
+
+        // reset colors and hidden attribute on each click
+
+        playerRock.css("color", "black")
+        playerPaper.css("color", "black");
+        playerScissors.css("color", "black");
+        comRock.attr("hidden", true);
+        comPaper.attr("hidden", true);
+        comScissors.attr("hidden", true);
+
+        // prevent playing when game hasn't started
+
         if (!gameStarted) {
             return false;
         } else {
             if (playerChoice === "playerRock") {
-            	paper.css("color", "black");
-            	scissors.css("color", "black");
+
                 if (comChoice === 1) {
+                    comRock.attr("hidden", false).css("color", "orange");
                     ties++;
                     $("#ties").html(ties);
-                    rock.css("color", "orange")
+                    playerRock.css("color", "orange")
                 } else if (comChoice === 2) {
+                    comPaper.attr("hidden", false).css("color", "green");
                     losses++;
                     $("#losses").html(losses);
-                    rock.css("color", "red")
+                    playerRock.css("color", "red")
                 } else {
+                    comScissors.attr("hidden", false).css("color", "red");
                     wins++;
                     $("#wins").html(wins);
-                    rock.css("color", "green")
+                    playerRock.css("color", "green")
                 }
             } else if (playerChoice === "playerPaper") {
-            	rock.css("color", "black");
-            	scissors.css("color", "black");
+
                 if (comChoice === 1) {
+                    comRock.attr("hidden", false).css("color", "red");
                     wins++;
                     $("#wins").html(wins);
-                    paper.css("color", "green")
+                    playerPaper.css("color", "green")
                 } else if (comChoice === 2) {
+                    comPaper.attr("hidden", false).css("color", "orange");
                     ties++;
                     $("#ties").html(ties);
-                    paper.css("color", "orange")
+                    playerPaper.css("color", "orange")
                 } else {
+                    comScissors.attr("hidden", false).css("color", "green");
                     losses++;
                     $("#losses").html(losses);
-                    paper.css("color", "red")
+                    playerPaper.css("color", "red")
                 }
             } else {
-            	paper.css("color", "black");
-            	rock.css("color", "black");
                 if (comChoice === 1) {
+                    comRock.attr("hidden", false).css("color", "green");
                     losses++;
                     $("#losses").html(losses);
-                    scissors.css("color", "red");
+                    playerScissors.css("color", "red");
                 } else if (comChoice === 2) {
+                    comPaper.attr("hidden", false).css("color", "red");
                     wins++;
                     $("#wins").html(wins);
-                    scissors.css("color", "green");
+                    playerScissors.css("color", "green");
                 } else {
+                    comScissors.attr("hidden", false).css("color", "orange");
                     ties++;
                     $("#ties").html(ties);
-                    scissors.css("color", "orange");
+                    playerScissors.css("color", "orange");
                 }
             }
         }
+    })
+
+    // ***setting reset button***
+    $("#reset").click(function(){
+        $(this).prop("disabled", true);
+        $("#start").prop("disabled", false);
+        gameStarted = false;
+        wins = 0;
+        losses = 0;
+        ties = 0;
+        $("#wins").html(wins);
+        $("#ties").html(ties);
+        $("#losses").html(losses);
+        min.val("");
+        sec.val("");
+        gameMin.html("00").css("color", "black");
+        gameSec.html("00").css("color", "black");
+        playerRock.css("color", "black")
+        playerPaper.css("color", "black");
+        playerScissors.css("color", "black");
+        comRock.attr("hidden", true);
+        comPaper.attr("hidden", true);
+        comScissors.attr("hidden", true);
     })
 
 })
