@@ -8,7 +8,11 @@ var min = $("#setMin"),
 	wins = 0,
 	losses = 0,
 	ties = 0,
-	gameStarted = false
+	gameStarted = false,
+	rock = $("#playerRock"),
+	paper = $("#playerPaper"),
+	scissors = $("#playerScissors")
+
 
 $(document).ready(function() {
 
@@ -99,43 +103,58 @@ $(document).ready(function() {
     // randomizing com choice and keeping track of scores
 
     $(".pick").click(function() {
-        var playerChoice = this.id
+        var playerChoice = this.id;
         var comChoice = Math.floor(Math.random() * 3) + 1;
         if (!gameStarted) {
-            return false
+            return false;
         } else {
             if (playerChoice === "playerRock") {
+            	paper.css("color", "black");
+            	scissors.css("color", "black");
                 if (comChoice === 1) {
                     ties++;
                     $("#ties").html(ties);
+                    rock.css("color", "orange")
                 } else if (comChoice === 2) {
                     losses++;
                     $("#losses").html(losses);
+                    rock.css("color", "red")
                 } else {
                     wins++;
                     $("#wins").html(wins);
+                    rock.css("color", "green")
                 }
             } else if (playerChoice === "playerPaper") {
+            	rock.css("color", "black");
+            	scissors.css("color", "black");
                 if (comChoice === 1) {
                     wins++;
                     $("#wins").html(wins);
+                    paper.css("color", "green")
                 } else if (comChoice === 2) {
                     ties++;
                     $("#ties").html(ties);
+                    paper.css("color", "orange")
                 } else {
                     losses++;
                     $("#losses").html(losses);
+                    paper.css("color", "red")
                 }
             } else {
+            	paper.css("color", "black");
+            	rock.css("color", "black");
                 if (comChoice === 1) {
                     losses++;
                     $("#losses").html(losses);
+                    scissors.css("color", "red");
                 } else if (comChoice === 2) {
                     wins++;
                     $("#wins").html(wins);
+                    scissors.css("color", "green");
                 } else {
                     ties++;
                     $("#ties").html(ties);
+                    scissors.css("color", "orange");
                 }
             }
         }

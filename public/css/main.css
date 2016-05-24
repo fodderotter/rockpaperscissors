@@ -42,6 +42,14 @@
 	color:orange;
 }
 
+.scores{
+	margin:10px 20px;
+}
+
 #losses{
 	color:red;
+}
+
+.fa-5x{
+	font-size:10rem !important;
 }

@@ -3,10 +3,10 @@
 
 <head>
     <title>Rock Paper Scissors</title>
-    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-    <script src="https://use.fontawesome.com/53d64b7f03.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="https://use.fontawesome.com/53d64b7f03.js"></script>
 </head>
 
 <body>
@@ -34,22 +34,33 @@
         </div>
     </section>
 
-    <section class="game">
+    <section class="game flex row space between">
         <div class="userChoices">
             <i class="fa fa-hand-rock-o fa-5x pick" id="playerRock"></i>
             <i class="fa fa-hand-paper-o fa-5x pick" id="playerPaper"></i>
             <i class="fa fa-hand-scissors-o fa-5x pick" id="playerScissors"></i>
         </div>
+        <div class="comChoice">
+        	<div hidden="true">
+        		<i class="fa fa-hand-rock-o fa-5x pick"></i>
+        	</div>
+        	<div hidden="true">
+        		<i class="fa fa-hand-paper-o fa-5x pick"></i>
+        	</div>
+            <div hidden="true">
+            	<i class="fa fa-hand-scissors-o fa-5x pick"></i>
+            </div>
+        </div>
     </section>
 
     <section class="scores flex center">
-    	<div class="gameScores flex row">
+    	<div class="flex row vertical-center">
             <div>Wins:</div>
-            <div id="wins">0</div>
+            <div id="wins" class="scores">0</div>
             <div>Ties:</div>
-            <div id="ties">0</div>
+            <div id="ties" class="scores">0</div>
             <div>Losses:</div>
-            <div id="losses">0</div>
+            <div id="losses" class="scores">0</div>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
