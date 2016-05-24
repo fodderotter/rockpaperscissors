@@ -14,7 +14,7 @@ var min = $("#setMin"),
 	playerScissors = $("#playerScissors"),
     comRock = $("#comRock"),
     comPaper = $("#comPaper"),
-    comScissors = $("#comScissors")
+    comScissors = $("#comScissors");
 
 
 $(document).ready(function() {
