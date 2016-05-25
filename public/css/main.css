@@ -35,7 +35,7 @@ input:focus{
   box-shadow: 0 0 5px 1px #969696;
 }
 
-i:hover{
+.pick:hover{
 	cursor: pointer;
 }
 

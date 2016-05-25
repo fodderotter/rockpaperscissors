@@ -38,6 +38,7 @@ $(document).ready(function() {
 
     // updating time based on input
     min.change(function() {
+        minSet = min.val();
         if (minSet > 9) {
             minSet = min.val();
             gameMin.text(minSet);
@@ -47,6 +48,7 @@ $(document).ready(function() {
         }
     })
     sec.change(function() {
+        secSet = sec.val();
         if (secSet > 9) {
             secSet = sec.val();
             gameSec.text(secSet);
@@ -57,6 +59,8 @@ $(document).ready(function() {
     })
 
     // countdown logic
+
+
     var startGame = function(cb) {
         gameStarted = true;
         if (!min) {
@@ -64,7 +68,7 @@ $(document).ready(function() {
         }
         if (!sec) {
             sec = 0;
-        }
+        }        
         gameTime = parseInt(minSet * 60) + parseInt(secSet);
         var interval = setInterval(function() {
             if (Math.floor(gameTime / 60) < 10) {
@@ -91,7 +95,10 @@ $(document).ready(function() {
 
     // ***gamestart logic***
     
-    $("#start").click(function() {        
+    $("#start").click(function() {
+        if(minSet === "00" && secSet === "00"){
+            return false;
+        }
     	$(this).prop("disabled", true);        
     	min.prop("disabled", true);
     	sec.prop("disabled", true);
@@ -105,7 +112,6 @@ $(document).ready(function() {
             else{
                 alert("Final Score: " + wins + " wins, " + losses + " losses, " + ties + " ties. It's a tie!")
             }
-            // $("#start").prop("disabled", false);
             $("#reset").prop("disabled", false);
             min.prop("disabled", false);
     		sec.prop("disabled", false);
