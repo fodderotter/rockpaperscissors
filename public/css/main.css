@@ -44,30 +44,40 @@ i:hover{
 }
 
 .flex{
+	display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
 	display:flex;
 }
 
 .row{
+	-webkit-flex-direction: row;
 	flex-direction: row;
 }
 
 .column{
+	-webkit-flex-direction: column;
 	flex-direction: column;
 }
 
 .center{
+	-webkit-justify-content: center;
 	justify-content: center;
 }
 
 .around{
+	-webkit-justify-content: space-around;
 	justify-content: space-around;
 }
 
 .between{
+	-webkit-justify-content: space-between;
 	justify-content: space-between;
 }
 
 .vertical-center{
+	-webkit-alight-items: center;
 	align-items: center;
 }
 
